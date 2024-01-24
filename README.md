@@ -1,35 +1,50 @@
-# demo
+# deploy-demo01
 
-This template should help get you started developing with Vue 3 in Vite.
+使用 deploy.sh 進行部屬
 
-## Recommended IDE Setup
+官方資料：https://v3.vitejs.dev/guide/static-deploy.html#github-pages
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# 步驟
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+1. 建立 deploy.sh 檔
 ```sh
-npm install
-```
+#!/usr/bin/env sh
 
-### Compile and Hot-Reload for Development
+# abort on errors
+set -e
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
+# build
 npm run build
+
+# navigate into the build output directory
+cd dist
+
+# place .nojekyll to bypass Jekyll processing
+echo > .nojekyll
+
+# if you are deploying to a custom domain
+# echo 'www.example.com' > CNAME
+
+git init
+git checkout -B main
+git add -A
+git commit -m 'deploy'
+
+# if you are deploying to https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
+
+# if you are deploying to https://<USERNAME>.github.io/<REPO>
+# git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
+
+cd -
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
+2. vite.config.js 中， base 屬性設定為儲存庫名稱
 ```sh
-npm run lint
+base: "/<REPO>/"
+```
+
+3. 部屬指令
+```sh
+sh deploy.sh
 ```
