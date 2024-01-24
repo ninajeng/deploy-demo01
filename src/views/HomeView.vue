@@ -1,17 +1,17 @@
 <script>
-import TheWelcome from '../components/TheWelcome.vue'
 export default {
   data(){
     return{
-      text: 'hi~~~'
+      title: 'deploy-demo01',
+      text: 'use sh deploy.sh'
     }
   }
 }
 </script>
 
 <template>
-  <h3>{{ text }}</h3>
-  <main>
-    <TheWelcome />
-  </main>
+  <div style="display: flex; flex-direction: column; justify-content: center;">
+    <h1>{{ title }}</h1>
+    <p>{{ text }}</p>
+  </div>
 </template>
