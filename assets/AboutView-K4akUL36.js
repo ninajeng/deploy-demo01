@@ -1,0 +1,1 @@
+import{_ as o,c as s,o as e,a as t}from"./index-leWl5ZXQ.js";const a={mounted(){console.log(this.axios)}},c={class:"about"},n=t("h1",null,"This is an about page",-1),_=[n];function i(r,d,l,p,u,h){return e(),s("div",c,_)}const m=o(a,[["render",i]]);export{m as default};
